@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.samsungpay.s2p.membership.MembershipTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2017-08-03T18:28:26" hostname="SPI-1246" time="0.486">
+  <properties/>
+  <testcase name="verifyCustomClaimI18nContentRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.255"/>
+  <testcase name="verifyRegistrationCardIDRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.002"/>
+  <testcase name="verifyBarcodeSymbologyRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyRegistrationMembershipIDRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="testRS256JWTCreateAndSign" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.216"/>
+  <testcase name="createRegistrationObject" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyRegistrationMembershipIDTypeRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyCardArtI18nArtUrlRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyS2PRequestRegistrationObjRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyTracksAtLeastOneTrackRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.0"/>
+  <testcase name="verifyRegistrationProgramNameRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.0"/>
+  <testcase name="verifyBarcodeDataRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyS2PRequestKeyIDRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="readPrivateKeyFromPEM" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyCardArtValueRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.001"/>
+  <testcase name="verifyCustomClaimI18nLabelRequired" classname="com.samsungpay.s2p.membership.MembershipTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,4 @@
+com.samsungpay.s2p.common
+com.samsungpay.s2p.common.jwt
+com.samsungpay.s2p.common.jwt.algorithm
+com.samsungpay.s2p.common.model

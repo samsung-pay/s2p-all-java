@@ -1,0 +1,189 @@
+/*
+ * Copyright 2017 Samsung Pay, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+buildscript {
+    ext {
+        $bouncycastle_version = '1.57'
+        $nimbus_jose_jwt = '4.40'
+        $jackson_version = '2.9.0'
+        $commons_codec_version = '1.10'
+        $junit_version = '4.12'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.jfrog.bintray'
+
+    group = 'com.samsungpay.s2p'
+    version = '1.0.0'
+
+    ext {
+        title = 's2p-all'
+        organizationId = 'com.samsungpay'
+        organizationName = 'Samsung Pay, Inc.'
+        organizationUrl = 'http://www.samsungpay.com/'
+        createdBy = "${System.getProperty('java.version')} (${System.getProperty('java.vm.vendor')})"
+    }
+
+    idea {
+        module {
+            excludeDirs -= file(buildDir)
+        }
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    configurations {
+        extraLibs
+    }
+
+    compileJava {
+        sourceCompatibility = 1.6
+        targetCompatibility = 1.6
+        options.encoding = 'UTF-8'
+    }
+
+    compileTestJava {
+        sourceCompatibility = 1.6
+        targetCompatibility = 1.6
+        options.encoding = 'UTF-8'
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar, javadocJar
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+
+                artifactId archivesBaseName
+
+                from components.java
+
+                pom.withXml {
+                    def node = asNode()
+                    node.children().last() + {
+                        resolveStrategy = Closure.DELEGATE_FIRST
+                        name title
+                        description description
+                        url organizationUrl
+                        organization {
+                            name organizationName
+                            url organizationUrl
+                        }
+                    }
+
+                    node.dependencies.'*'.findAll() {
+                        it.scope.text() == 'runtime'
+                    }.each() {
+                        it.scope*.value = 'compile'
+                    }
+                }
+
+                artifact sourcesJar
+                artifact javadocJar
+            }
+        }
+
+        repositories {
+            maven {
+                name 'spay'
+                url "${version.endsWith('-SNAPSHOT') ? snapshotRepoUrl : releaseRepoUrl}/"
+                credentials {
+                    username spayRepoUser
+                    password spayRepoPassword
+                }
+            }
+        }
+    }
+
+    processResources {
+        from ("../") {
+            include 'LICENSE','NOTICE'
+        }
+    }
+    
+    bintray {
+        user = bintrayUser
+        key = bintrayApiKey
+        publications = ['mavenJava']
+        pkg {
+            repo = 'maven'
+            name = 's2p-all'
+            userOrg = 'samsung-pay'
+            licenses = ['Apache-2.0']
+            websiteUrl = 'https://github.com/samsung-pay/s2p-all-java'
+            issueTrackerUrl = 'https://github.com/samsung-pay/s2p-all-java/issues'
+            vcsUrl = 'https://github.com/samsung-pay/s2p-all-java.git'
+            labels = ['save2pay','s2p','samsung-pay']
+            publicDownloadNumbers = true
+            version {
+                name = '1.0.0'
+                desc = 'Samsung Pay S2P SDK'
+                released  = new Date()
+            }
+        }
+    }
+}
+
+configurations.all {
+    transitive = false
+}
+
+dependencies {
+    compile project(':s2p-common')
+    compile project(':s2p-giftcard')
+    compile project(':s2p-membership')
+}
+
+jar {
+    from configurations.runtime
+
+    manifest {
+        attributes(
+                'Specification-Title': title,
+                'Specification-Version': version,
+                'Specification-Vendor': organizationName,
+                'Specification-Vendor-Id': organizationId,
+                'Implementation-Title': title,
+                'Implementation-Version': version,
+                'Implementation-Vendor': organizationName,
+                'createdBy': createdBy,
+        )
+    }
+}

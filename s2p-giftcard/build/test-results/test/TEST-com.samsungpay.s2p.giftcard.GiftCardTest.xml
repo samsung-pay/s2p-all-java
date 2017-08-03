@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.samsungpay.s2p.giftcard.GiftCardTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2017-08-03T18:28:25" hostname="SPI-1246" time="0.442">
+  <properties/>
+  <testcase name="verifyCardTncRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.248"/>
+  <testcase name="verifyCardImageUrlRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="verifyRegistrationCardRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.002"/>
+  <testcase name="verifyMerchantNameRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="verifyCardIDRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="testRS256JWTCreateAndSign" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.182"/>
+  <testcase name="verifyRegistrationMerchantRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="createRegistrationObject" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="verifyMerchantLogoUrlRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="verifyS2PRequestRegistrationObjRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="verifyS2PRequestKeyIDRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="readPrivateKeyFromPEM" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.001"/>
+  <testcase name="verifyTncAtLeaseOneFieldRequired" classname="com.samsungpay.s2p.giftcard.GiftCardTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

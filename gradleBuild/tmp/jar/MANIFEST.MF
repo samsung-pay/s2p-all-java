@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: s2p-all
+Implementation-Version: 1.0.0
+createdBy: 1.8.0_101 (Oracle Corporation)
+Specification-Vendor: Samsung Pay, Inc.
+Specification-Title: s2p-all
+Specification-Version: 1.0.0
+Specification-Vendor-Id: com.samsungpay
+Implementation-Vendor: Samsung Pay, Inc.
+
